@@ -16,7 +16,7 @@ import "./Footer.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-export default function App(){
+function App(){
   return (
     <div className="App">
       <div className="Container">
