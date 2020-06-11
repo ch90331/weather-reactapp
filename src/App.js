@@ -1,24 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Cities from "./Cities";
+import CurrentWeather from "./CurrentWeather";
+import ExtraInfo from "./ExtraInfo";
+import Search from "./Search";
+import ForecastRow from "./ForecastRow";
+import Footer from "./Footer";
 
-function App() {
+import "./App.css";
+import "./Cities.css";
+import "./Search.css";
+import "./CurrentWeather.css";
+import "./ExtraInfo.css";
+import "./Forecast.css";
+import "./Footer.css";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+
+export default function App(){
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <div className="Container">
+        <Cities />
+        <Search />
+        <h1>Porto</h1>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Last updated:
+          <span> 📆 Sunday March 22, 2020</span>
+          <span> ⏲ 01:34 </span>
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <CurrentWeather />
+        <ExtraInfo />
+        <ForecastRow />
+      </div>
+      <Footer />
     </div>
   );
 }
