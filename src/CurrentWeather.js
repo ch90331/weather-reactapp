@@ -2,19 +2,18 @@ import React,{useState} from "react";
 import axios from "axios";
 
 export default function CurrentWeather() {
-  const [show, setShow]=useState(false);
-  const [weatherData, setWeatherData]=useState({});
+  const [weatherData, setWeatherData]=useState({show:false});
   function weatherResponse(response){
     console.log(response.data)
     setWeatherData({
+      show: true,
       temperature: response.data.main.temp,
       description: response.data.weather[0].description,
       feelTemperature: response.data.main.feels_like,
     });
-    setShow(true);
   }
 
-  if (show){
+  if (weatherData.show){
   return (
     <div className="CurrentWeather">
       <h2>
