@@ -1,3 +1,7 @@
+p {
+  margin-bottom: 8px;
+}
+
 .weatherCondition {
     text-transform: capitalize;
   }
