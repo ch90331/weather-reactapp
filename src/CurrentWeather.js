@@ -3,10 +3,14 @@ import axios from "axios";
 
 export default function CurrentWeather() {
   const [show, setShow]=useState(false);
-  const [temperature, setTemperature]=useState(null);
+  const [weatherData, setWeatherData]=useState({});
   function weatherResponse(response){
     console.log(response.data)
-    setTemperature(response.data.main.temp);
+    setWeatherData({
+      temperature: response.data.main.temp,
+      description: response.data.weather[0].description,
+      feelTemperature: response.data.main.feels_like,
+    });
     setShow(true);
   }
 
@@ -16,7 +20,7 @@ export default function CurrentWeather() {
       <h2>
         <div className="row">
           <span className="col-6">
-            <span className="weatherCondition"> Light rain </span>
+            <span className="weatherCondition"> {weatherData.description} </span>
             <div>
               <img
                 src="https://ssl.gstatic.com/onebox/weather/64/rain_light.png"
@@ -25,14 +29,14 @@ export default function CurrentWeather() {
               />
               <span>
                 {" "}
-                {Math.round(temperature)}
+                {Math.round(weatherData.temperature)}
                 <span className="units">°C|°F</span>
               </span>
             </div>
           </span>
         </div>
         <small>
-          🌡 Real feel: 18
+          🌡 Real feel: {Math.round(weatherData.feelTemperature)}
           <span className="units1">°C|°F</span>
         </small>
       </h2>
