@@ -17,4 +17,37 @@ p {
     top: -8px;
     font-size: 12px;
   }
+
+  .Enter {
+    border-radius: 10px;
+    border: solid #50b272;
+    width: 33%;
+    height: 25px;
+  }
+  
+  .go {
+    border: none;
+    border-radius: 10px;
+    color: #e8f3dc;
+    background: #50b272;
+    width: 75px;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  
+  .now {
+    border: none;
+    border-radius: 10px;
+    padding: 5px 7px 5px 7px;
+    color: #50b272;
+    background: #e8f3dc;
+    width: 130px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .ExtraInfo {
+    color: #a3a9b6;
+    margin: 5px 20px 0px 0px;
+  }
   

@@ -35,7 +35,7 @@ export default function FormattedTime (props){
  );
  }else{
     const apiKey="2705c3833e0eb8cc3d104831dddd5c14";
-    let apiUrl=`http://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
+    let apiUrl=`http://api.openweathermap.org/data/2.5/weather?q=${props.location}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(timeResponse);
 
     return"Loading....";
