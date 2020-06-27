@@ -1,7 +1,8 @@
 import React,{useState} from "react";
+import FormattedTime from "./FormattedTime";
 import axios from "axios";
 
-export default function CurrentWeather(prop) {
+export default function CurrentWeather(props) {
   const [weatherData, setWeatherData]=useState({show:false});
   function weatherResponse(response){
     console.log(response.data)
@@ -12,6 +13,7 @@ export default function CurrentWeather(prop) {
       feelTemperature: response.data.main.feels_like,
       city: response.data.name,
       country: response.data.sys.country,
+      date: new Date(response.data.dt*1000),
     });
   }
 
@@ -20,9 +22,7 @@ export default function CurrentWeather(prop) {
     <div className="CurrentWeather">
       <h1>{weatherData.city} <small>in</small> {weatherData.country}</h1> 
         <p>
-          Last updated:
-          <span> 📆 Sunday March 22, 2020</span>
-          <span> ⏲ 01:34 </span>
+          <FormattedTime date={weatherData.date} defaultCity="Taipei"/>
         </p>
       <h2>
         <div className="row">
@@ -51,7 +51,7 @@ export default function CurrentWeather(prop) {
   );
   }else{
     const apiKey="2705c3833e0eb8cc3d104831dddd5c14";
-    let apiUrl=`http://api.openweathermap.org/data/2.5/weather?q=${prop.defaultCity}&appid=${apiKey}&units=metric`;
+    let apiUrl=`http://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(weatherResponse);
 
     return"Loading....";
