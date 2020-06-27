@@ -1,5 +1,6 @@
 import React,{useState} from "react";
 import FormattedTime from "./FormattedTime";
+import WeatherIcon from "./WeatherIcon";
 import axios from "axios";
 
 
@@ -19,7 +20,7 @@ export default function CurrentWeather(props) {
       city: response.data.name,
       country: response.data.sys.country,
       date: new Date(response.data.dt*1000),
-      iconUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+      icon: response.data.weather[0].icon
     });
   }
 
@@ -68,13 +69,11 @@ export default function CurrentWeather(props) {
           <span className="col-6">
             <span className="weatherCondition"> {weatherData.description} </span>
             <div>
-              <img
-                src={weatherData.iconUrl}
-                alt="rain"
-                id="iconElement"
-              />
+              <div className="float-left">
+                <WeatherIcon code={weatherData.icon}/>
+              </div>
               <span>
-                {" "}
+                {"   "}
                 {Math.round(weatherData.temperature)}
                 <span className="units">°C|°F</span>
               </span>
