@@ -24,6 +24,7 @@ export default function FormattedTime (props){
     if (minutes<10){
         minutes=`0${minutes}`;
     }
+    
 
  if (timeData.show){
       

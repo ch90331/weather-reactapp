@@ -19,6 +19,7 @@ export default function CurrentWeather(props) {
       city: response.data.name,
       country: response.data.sys.country,
       date: new Date(response.data.dt*1000),
+      iconUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
     });
   }
 
@@ -68,7 +69,7 @@ export default function CurrentWeather(props) {
             <span className="weatherCondition"> {weatherData.description} </span>
             <div>
               <img
-                src="https://ssl.gstatic.com/onebox/weather/64/rain_light.png"
+                src={weatherData.iconUrl}
                 alt="rain"
                 id="iconElement"
               />
