@@ -1,7 +1,10 @@
 import React,{useState} from "react";
 import FormattedTime from "./FormattedTime";
 import WeatherIcon from "./WeatherIcon";
+import WeatherTemperature from "./WeatherTemperature";
 import axios from "axios";
+
+import "./WeatherTemperature.css";
 
 
 
@@ -62,7 +65,7 @@ export default function CurrentWeather(props) {
       </form>
       <h1>{weatherData.city} <small>in</small> {weatherData.country}</h1> 
         <p>
-          <FormattedTime date={weatherData.date} location={weatherData.city}/>
+          <FormattedTime date={weatherData.date} location={city}/>
         </p>
       <h2>
         <div className="row">
@@ -73,16 +76,16 @@ export default function CurrentWeather(props) {
                 <WeatherIcon code={weatherData.icon}/>
               </div>
               <span>
-                {"   "}
-                {Math.round(weatherData.temperature)}
-                <span className="units">°C|°F</span>
+                <WeatherTemperature celcius={weatherData.temperature}/>
               </span>
             </div>
           </span>
         </div>
         <small>
-          🌡 Real feel: {Math.round(weatherData.feelTemperature)}
-          <span className="units1">°C|°F</span>
+          🌡 Real feel: 
+          <span>
+          <WeatherTemperature celcius={weatherData.feelTemperature} />
+          </span>
         </small>
       </h2>
       <div className="ExtraInfo">

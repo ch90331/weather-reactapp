@@ -6,18 +6,6 @@ p {
     text-transform: capitalize;
   }
   
-  .units {
-    position: relative;
-    top: -10px;
-    font-size: 18px;
-  }
-  
-  .units1 {
-    position: relative;
-    top: -8px;
-    font-size: 12px;
-  }
-
   .Enter {
     border-radius: 10px;
     border: solid #50b272;
