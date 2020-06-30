@@ -1,6 +1,7 @@
 import React from "react";
 import Cities from "./Cities";
 import CurrentWeather from "./CurrentWeather";
+import "./FontAwesomeIcon";
 import Footer from "./Footer";
 
 import "./App.css";
@@ -10,6 +11,7 @@ import "./Forecast.css";
 import "./Footer.css";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+
 
 function App(){
   

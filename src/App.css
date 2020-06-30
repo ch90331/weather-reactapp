@@ -3,6 +3,7 @@
 .Container {
   color: #5a6275;
   font-family: "Baloo Thambi 2", cursive;
+  text-align: center;
   border: solid #006ec5;
   border-radius: 10px;
   padding: 10px 30px;

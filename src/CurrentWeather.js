@@ -6,6 +6,7 @@ import ForecastRow from "./ForecastRow";
 import axios from "axios";
 
 import "./WeatherTemperature.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 
 
@@ -89,8 +90,8 @@ export default function CurrentWeather(props) {
         </small>
       </h2>
       <div className="ExtraInfo">
-      💧 Humidity: {weatherData.humidity}%
-      <div> 🌬 Wind: {weatherData.wind} km/h</div>
+      <FontAwesomeIcon icon="tint" size="lg" /> Humidity: {weatherData.humidity}%
+      <div> <FontAwesomeIcon icon="wind" size="lg" /> Wind: {weatherData.wind} km/h</div>
       </div>
       <ForecastRow location={weatherData.city}/>
     </div>
