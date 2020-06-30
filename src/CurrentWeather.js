@@ -83,7 +83,7 @@ export default function CurrentWeather(props) {
           </span>
         </div>
         <small>
-          🌡 Real feel: 
+          <FontAwesomeIcon icon="thermometer-half" size="lg" /> Real feel: 
           <span>
           <WeatherTemperature celcius={weatherData.feelTemperature} />
           </span>
