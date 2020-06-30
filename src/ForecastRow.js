@@ -12,7 +12,7 @@ export default function ForecastRow(props) {
     ;
   }
 
-  if(show){
+  if(show && props.location === forecast.city.name){
     return (
       <div className="ForecastRow row">
         <Forecast data={forecast.list[0]} />
