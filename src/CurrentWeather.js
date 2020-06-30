@@ -2,6 +2,7 @@ import React,{useState} from "react";
 import FormattedTime from "./FormattedTime";
 import WeatherIcon from "./WeatherIcon";
 import WeatherTemperature from "./WeatherTemperature";
+import ForecastRow from "./ForecastRow";
 import axios from "axios";
 
 import "./WeatherTemperature.css";
@@ -12,7 +13,6 @@ export default function CurrentWeather(props) {
   const [weatherData, setWeatherData]=useState({show:false});
   const [city,setCity]=useState(props.defaultCity);
   function weatherResponse(response){
-    console.log(response.data);
     setWeatherData({
       show: true,
       temperature: response.data.main.temp,
@@ -91,7 +91,8 @@ export default function CurrentWeather(props) {
       <div className="ExtraInfo">
       💧 Humidity: {weatherData.humidity}%
       <div> 🌬 Wind: {weatherData.wind} km/h</div>
-    </div>
+      </div>
+      <ForecastRow location={weatherData.city}/>
     </div>
   );
   }else{

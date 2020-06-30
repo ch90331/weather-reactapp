@@ -1,7 +1,6 @@
 import React from "react";
 import Cities from "./Cities";
 import CurrentWeather from "./CurrentWeather";
-import ForecastRow from "./ForecastRow";
 import Footer from "./Footer";
 
 import "./App.css";
@@ -19,7 +18,6 @@ function App(){
       <div className="Container">
         <Cities />
         <CurrentWeather defaultCity="Taipei"/>
-        <ForecastRow />
       </div>
       <Footer />
     </div>
