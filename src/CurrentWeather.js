@@ -3,6 +3,7 @@ import FormattedTime from "./FormattedTime";
 import WeatherIcon from "./WeatherIcon";
 import WeatherTemperature from "./WeatherTemperature";
 import ForecastRow from "./ForecastRow";
+import Action from "./Action";
 import axios from "axios";
 
 import "./WeatherTemperature.css";
@@ -14,6 +15,7 @@ export default function CurrentWeather(props) {
   const [weatherData, setWeatherData]=useState({show:false});
   const [city,setCity]=useState(props.defaultCity);
   function weatherResponse(response){
+    console.log(response.data)
     setWeatherData({
       show: true,
       temperature: response.data.main.temp,
@@ -24,7 +26,8 @@ export default function CurrentWeather(props) {
       city: response.data.name,
       country: response.data.sys.country,
       date: new Date(response.data.dt*1000),
-      icon: response.data.weather[0].icon
+      icon: response.data.weather[0].icon,
+      timeZone: response.data.timezone,
     });
   }
 
@@ -56,38 +59,35 @@ export default function CurrentWeather(props) {
             className="Enter"
             onChange={getCity}
           />
-          <input type="submit" value="GO🗺" className="go" />
+          <input type="submit" value="GO" className="go" />
           <span>
             <button className="now" id="currentLocation">
-              Localize 📍
+              Localize
             </button>
           </span>
         </div>
       </form>
+      <div className="top">
       <h1>{weatherData.city} <small>in</small> {weatherData.country}</h1> 
         <p>
-          <FormattedTime date={weatherData.date} location={city}/>
+          <FormattedTime date={weatherData.date} location={weatherData.timeZone}/>
         </p>
+      </div>
       <h2>
         <div className="row">
           <span className="col-6">
             <span className="weatherCondition"> {weatherData.description} </span>
-            <div>
-              <div className="float-left">
-                <WeatherIcon code={weatherData.icon}/>
-              </div>
-              <span>
-                <WeatherTemperature celcius={weatherData.temperature}/>
-              </span>
-            </div>
+            <span><WeatherTemperature celcius={weatherData.temperature}/></span>
+            <span><WeatherIcon code={weatherData.icon}/></span>
+          </span>
+          <span className="col-6">
+            <FontAwesomeIcon icon="thermometer-half" size="lg" /> Real feel: 
+           <span>
+            <WeatherTemperature celcius={weatherData.feelTemperature} />
+            <Action />
+           </span>
           </span>
         </div>
-        <small>
-          <FontAwesomeIcon icon="thermometer-half" size="lg" /> Real feel: 
-          <span>
-          <WeatherTemperature celcius={weatherData.feelTemperature} />
-          </span>
-        </small>
       </h2>
       <div className="ExtraInfo">
       <FontAwesomeIcon icon="tint" size="lg" /> Humidity: {weatherData.humidity}%
