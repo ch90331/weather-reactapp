@@ -16,13 +16,13 @@ export default function Action (props){
   }
 
   function changeToComfortable (){
-    setComment("Comfortable temperature to invite your friends 👩🏻‍🤝‍👩🏻 or family 👨‍👩‍👧‍👦 to do some outdoor activities! Why not visit night market?");
+    setComment("Comfortable temperature to invite your friends 👩🏻‍🤝‍👩🏻 or family 👨‍👩‍👧‍👦 to do some outdoor activities! Why not visit night market?👇🏻👇🏻👇🏻");
     setImg("Night_Market");
     setObject(null);
   }
 
   function changeToCool (){
-    setComment("Weather is cooler 🌬🍃, let's have a warm bowl of ");
+    setComment("Weather is cooler 🍃, let's have a warm bowl of ");
     setImg("Minced_Pork_Rice");
     setObject("Minced Pork Rice");
   }
@@ -41,11 +41,11 @@ export default function Action (props){
   useEffect(()=> {
   if (props.temperature>30){
     changeToHot();
-  }else if (20<props.temperature<=30) {
+  }else if (props.temperature>20 && props.temperature<=30) {
     changeToComfortable();
-  }else if (10<props.temperature<=20) {
+  }else if (props.temperature>10 && props.temperature<=20) {
     changeToCool();
-  }else if (0<props.temperature<=10){
+  }else if (props.temperature<0 && props.temperature<=10){
     changeToCold(); 
   }else {
     changeToFreezinglyCold();
