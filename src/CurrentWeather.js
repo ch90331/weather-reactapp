@@ -79,6 +79,10 @@ export default function CurrentWeather(props) {
             <span className="weatherCondition"> {weatherData.description} </span>
             <span><WeatherTemperature celcius={weatherData.temperature}/></span>
             <span><WeatherIcon code={weatherData.icon}/></span>
+            <div className="ExtraInfo">
+            <FontAwesomeIcon icon="tint" size="lg" /> Humidity: {weatherData.humidity}%
+            <div> <FontAwesomeIcon icon="wind" size="lg" /> Wind: {weatherData.wind} km/h</div>
+            </div>
           </span>
           <span className="col-6">
             <FontAwesomeIcon icon="thermometer-half" size="lg" /> Real feel: 
@@ -89,10 +93,7 @@ export default function CurrentWeather(props) {
           </span>
         </div>
       </h2>
-      <div className="ExtraInfo">
-      <FontAwesomeIcon icon="tint" size="lg" /> Humidity: {weatherData.humidity}%
-      <div> <FontAwesomeIcon icon="wind" size="lg" /> Wind: {weatherData.wind} km/h</div>
-      </div>
+      
       <ForecastRow location={weatherData.city}/>
     </div>
   );
