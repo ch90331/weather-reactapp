@@ -2,6 +2,10 @@ p {
   margin-bottom: 8px;
 }
 
+.top{
+  color: #50B272;
+}
+
 .weatherCondition {
     text-transform: capitalize;
   }

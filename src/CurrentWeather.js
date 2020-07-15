@@ -70,7 +70,7 @@ export default function CurrentWeather(props) {
       <div className="top">
       <h1>{weatherData.city} <small>in</small> {weatherData.country}</h1> 
         <p>
-          <FormattedTime date={weatherData.date} location={weatherData.timeZone}/>
+          <FormattedTime date={weatherData.date} location={weatherData.city}/>
         </p>
       </div>
       <h2>
@@ -84,7 +84,7 @@ export default function CurrentWeather(props) {
             <FontAwesomeIcon icon="thermometer-half" size="lg" /> Real feel: 
            <span>
             <WeatherTemperature celcius={weatherData.feelTemperature} />
-            <Action />
+            <Action temperature={weatherData.feelTemperature} />
            </span>
           </span>
         </div>

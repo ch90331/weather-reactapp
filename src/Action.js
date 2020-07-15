@@ -1,5 +1,5 @@
-import React,{useState} from "react";
-import Mango_Shaved_Ice from "./Img/Mango_Shaved_Ice.png";
+import React,{useState, useEffect} from "react";
+
 
 import "./Action.css";
 
@@ -15,23 +15,44 @@ export default function Action (props){
     setObject("Mango Shaved Ice");
   }
 
+  function changeToComfortable (){
+    setComment("Comfortable temperature to invite your friends 👩🏻‍🤝‍👩🏻 or family 👨‍👩‍👧‍👦 to do some outdoor activities! Why not visit night market?");
+    setImg("Night_Market");
+    setObject(null);
+  }
+
+  function changeToCool (){
+    setComment("Weather is cooler 🌬🍃, let's have a warm bowl of ");
+    setImg("Minced_Pork_Rice");
+    setObject("Minced Pork Rice");
+  }
+
+  function changeToCold (){
+    setComment("Soup dumplings with rich nutrients can warm you up 🔥 better than anything else, just need to be careful while eating!!");
+    setImg("Xiaolongbao");
+  }
+
   function changeToFreezinglyCold(){
     setComment("Feeling freezingly cold 🥶 ? Taiwanese rice cooker is your best tool to prepare a nostalgic soup 🥣");
     setImg("Rice_cooker");
     setObject(null);
   }
-
+  
+  useEffect(()=> {
   if (props.temperature>30){
     changeToHot();
-    return(
-      <div className= "Action">
-       <div> {comment} </div>
-       <img src={require(`./Img/${img}.png`)} alt="hot" width="35%" />
-       <div> {object} </div>
-      </div>
-    );
+  }else if (20<props.temperature<=30) {
+    changeToComfortable();
+  }else if (10<props.temperature<=20) {
+    changeToCool();
+  }else if (0<props.temperature<=10){
+    changeToCold(); 
   }else {
     changeToFreezinglyCold();
+  }
+ },
+[props.temperature]);
+
     return(
       <div className= "Action">
        <div> {comment} </div>
@@ -40,4 +61,3 @@ export default function Action (props){
       </div>
     );
   }
-}
