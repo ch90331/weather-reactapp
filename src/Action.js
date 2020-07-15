@@ -30,6 +30,7 @@ export default function Action (props){
   function changeToCold (){
     setComment("Soup dumplings with rich nutrients can warm you up 🔥 better than anything else, just need to be careful while eating!!");
     setImg("Xiaolongbao");
+    setObject(null);
   }
 
   function changeToFreezinglyCold(){
@@ -45,7 +46,7 @@ export default function Action (props){
     changeToComfortable();
   }else if (props.temperature>10 && props.temperature<=20) {
     changeToCool();
-  }else if (props.temperature<0 && props.temperature<=10){
+  }else if (props.temperature>0 && props.temperature<=10){
     changeToCold(); 
   }else {
     changeToFreezinglyCold();
