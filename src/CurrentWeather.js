@@ -35,8 +35,18 @@ export default function CurrentWeather(props) {
     const apiKey="2705c3833e0eb8cc3d104831dddd5c14";
     let apiUrl=`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(weatherResponse);
-
   }
+
+  function showPosition(){
+  navigator.geolocation.getCurrentPosition(retrievePosition);
+  function retrievePosition(position){
+    let lat= position.coords.latitude;
+    let lon= position.coords.longitude;
+    let apiKey=`2705c3833e0eb8cc3d104831dddd5c14`;
+    let apiUrl=`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(weatherResponse);
+  }
+}
 
   function handleSearch(event){
     event.preventDefault();
@@ -45,6 +55,11 @@ export default function CurrentWeather(props) {
 
   function getCity(event){
     setCity(event.target.value);
+  }
+
+  function handlePosition(event){
+    event.preventDefault();
+    showPosition();
   }
 
   if (weatherData.show){
@@ -61,7 +76,7 @@ export default function CurrentWeather(props) {
           />
           <input type="submit" value="GO" className="go" />
           <span>
-            <button className="now" id="currentLocation">
+            <button className="now" onClick={handlePosition}>
               Localize
             </button>
           </span>
