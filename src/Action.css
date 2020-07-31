@@ -1,7 +1,49 @@
-.Action {
- border:solid gray;
+.hot {
+ border:inset #50B272;
+ border-width: 8px;
  border-radius: 5px 80px 5px;
  padding: 20px 10px;
  font-size: 20px;
- color:black;
+ color:#2A5E3C;
+ background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%);
+}
+
+.comfortable {
+    border:inset #50B272;
+    border-width: 8px;
+    border-radius: 5px 80px 5px;
+    padding: 20px 10px;
+    font-size: 20px;
+    color:#2A5E3C;
+    background-image: linear-gradient(-20deg, #ddd6f3 0%, #faaca8 100%, #faaca8 100%);
+   }
+
+.cool {
+    border:inset #50B272;
+    border-width: 8px;
+    border-radius: 5px 80px 5px;
+    padding: 20px 10px;
+    font-size: 20px;
+    color:#2A5E3C;
+    background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+   }
+
+.cold{
+    border:inset #50B272;
+    border-width: 8px;
+    border-radius: 5px 80px 5px;
+    padding: 20px 10px;
+    font-size: 20px;
+    color:#2A5E3C;
+    background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
+    }
+
+.freezinglyCold{
+    border:inset #50B272;
+    border-width: 8px;
+    border-radius: 5px 80px 5px;
+    padding: 20px 10px;
+    font-size: 20px;
+    color:#2A5E3C;
+    background-image: linear-gradient(-225deg, #FFFEFF 0%, #D7FFFE 100%);
 }
