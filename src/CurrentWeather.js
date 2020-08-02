@@ -1,5 +1,6 @@
 import React,{useState} from "react";
 import FormattedTime from "./FormattedTime";
+import TemperatureButton from "./TemperatureButton";
 import WeatherIcon from "./WeatherIcon";
 import WeatherTemperature from "./WeatherTemperature";
 import ForecastRow from "./ForecastRow";
@@ -15,7 +16,6 @@ export default function CurrentWeather(props) {
   const [weatherData, setWeatherData]=useState({show:false});
   const [city,setCity]=useState(props.defaultCity);
   function weatherResponse(response){
-    console.log(response.data)
     setWeatherData({
       show: true,
       temperature: response.data.main.temp,
@@ -28,6 +28,8 @@ export default function CurrentWeather(props) {
       date: new Date(response.data.dt*1000),
       icon: response.data.weather[0].icon,
       timeZone: response.data.timezone,
+      lon:response.data.coord.lon,
+      lat:response.data.coord.lat,
     });
   }
 
@@ -85,25 +87,26 @@ export default function CurrentWeather(props) {
       <div className="top">
       <h1>{weatherData.city} <small>in</small> {weatherData.country}</h1> 
         <p>
-          <FormattedTime date={weatherData.date} location={weatherData.city}/>
+          <FormattedTime date={weatherData.date} lon={weatherData.lon} lat={weatherData.lat}/>
         </p>
       </div>
+      <TemperatureButton />
       <h2>
         <div className="row">
           <span className="col-6">
             <span className="weatherCondition"> {weatherData.description} </span>
             <span><WeatherTemperature celcius={weatherData.temperature}/></span>
             <span><WeatherIcon code={weatherData.icon}/></span>
-            <div className="ExtraInfo">
+            <h4 className="ExtraInfo">
             <FontAwesomeIcon icon="tint" size="lg" /> Humidity: {weatherData.humidity}%
             <div> <FontAwesomeIcon icon="wind" size="lg" /> Wind: {weatherData.wind} km/h</div>
-            </div>
+            </h4>
           </span>
           <span className="col-6">
             <FontAwesomeIcon icon="thermometer-half" size="lg" /> Real feel: 
            <span>
             <WeatherTemperature celcius={weatherData.feelTemperature} />
-            <Action temperature={weatherData.feelTemperature} />
+            <Action temperature={weatherData.feelTemperature}/>
            </span>
           </span>
         </div>
