@@ -66,10 +66,18 @@ export default function CurrentWeather(props) {
     setHour({
       display: realHours});
     let minute= date.getMinutes();
+    let rawOffset= response.data.raw_offset/3600;
+    if (Number.isInteger(rawOffset)){
+      minute=minute;
+    }else {
+      minute=minute+30;
+    }
     if (minute === 0){
       minute=`00`
     }else if (minute < 10){
       minute= `0${minute}`;
+    }else if (minute > 60){
+      minute= minute - 60;
     }else minute = minute;
     setMinute({
       display: minute});
