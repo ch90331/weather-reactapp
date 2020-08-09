@@ -10,11 +10,13 @@ import axios from "axios";
 import "./WeatherTemperature.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
-
 export default function CurrentWeather(props) {
   const [weatherData, setWeatherData]=useState({show:false});
   const [city,setCity]=useState(props.defaultCity);
+  const [day, setDay]=useState(null);
+  const [hour, setHour]=useState({});
+  const [minute, setMinute]=useState({});
+
   function weatherResponse(response){
     setWeatherData({
       show: true,
@@ -27,10 +29,50 @@ export default function CurrentWeather(props) {
       country: response.data.sys.country,
       date: new Date(response.data.dt*1000),
       icon: response.data.weather[0].icon,
-      timeZone: response.data.timezone,
       lon:response.data.coord.lon,
       lat:response.data.coord.lat,
     });
+
+    let lat= response.data.coord.lat;
+    let lon= response.data.coord.lon;
+    const apiKey="2705c3833e0eb8cc3d104831dddd5c14";
+    let apiUrl=`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(timezoneResponse);
+  }
+
+  function timezoneResponse(response){
+    let timeUrl=`https://worldtimeapi.org/api/timezone/`;
+    axios.get(`${timeUrl}${response.data.timezone}`).then(showRealTime);
+  }
+
+  function showRealTime(response){
+    let days=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    let day= response.data.day_of_week;
+    setDay(days[day]);
+    let date= new Date();
+    let hours= date.getUTCHours();
+    let inte= parseInt(hours);
+    let offset= parseInt(response.data.utc_offset);
+    let realHours= inte+offset;
+    if (realHours >= 24) {
+      realHours= realHours -24;
+    } else if (realHours < 0){
+      realHours += 24;
+    } else if (realHours === 0){
+      realHours = `00`;
+    } else if (realHours < 10) {
+      realHours =`0${realHours}`;
+    } else realHours=realHours;
+    setHour({
+      display: realHours});
+    let minute= date.getMinutes();
+    if (minute === 0){
+      minute=`00`
+    }else if (minute < 10){
+      minute= `0${minute}`;
+    }else minute = minute;
+    setMinute({
+      display: minute});
   }
 
   function search(){
@@ -47,6 +89,10 @@ export default function CurrentWeather(props) {
     let apiKey=`2705c3833e0eb8cc3d104831dddd5c14`;
     let apiUrl=`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(weatherResponse);
+    
+    const apiKey1="7737326ac32c895e8c1798d8346e99e9";
+    let apiUrl1=`https://api.openweathermap.org/data/2.5/onecall?lat=${weatherData.lat}&lon=${weatherData.lon}&appid=${apiKey1}&units=metric`;
+    axios.get(apiUrl1).then(timezoneResponse);
   }
 }
 
@@ -87,10 +133,12 @@ export default function CurrentWeather(props) {
       <div className="top">
       <h1>{weatherData.city} <small>in</small> {weatherData.country}</h1> 
         <p>
-          <FormattedTime date={weatherData.date} lon={weatherData.lon} lat={weatherData.lat}/>
+          <FormattedTime day={day} realHour={hour.display} min={minute.display}/>
         </p>
       </div>
+      <div className="float-sm-right">
       <TemperatureButton />
+      </div>
       <h2>
         <div className="row">
           <span className="col-6">
