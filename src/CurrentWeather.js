@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import FormattedTime from "./FormattedTime";
-import TemperatureButton from "./TemperatureButton";
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import Button from 'react-bootstrap/Button';
 import WeatherIcon from "./WeatherIcon";
 import WeatherTemperature from "./WeatherTemperature";
 import ForecastRow from "./ForecastRow";
@@ -16,6 +17,7 @@ export default function CurrentWeather(props) {
   const [day, setDay]=useState(null);
   const [hour, setHour]=useState({});
   const [minute, setMinute]=useState({});
+  const [unit, setUnit]= useState ("celsius");
 
   function weatherResponse(response){
     setWeatherData({
@@ -117,6 +119,16 @@ export default function CurrentWeather(props) {
     event.preventDefault();
     showPosition();
   }
+  
+  function convertToCelsius(event){
+    event.preventDefault();
+    setUnit("celsius");
+  }
+
+  function convertToFahrenheit(event){
+    event.preventDefault();
+    setUnit("fahrenheit");
+ }
 
   if (weatherData.show){
   return (
@@ -145,13 +157,16 @@ export default function CurrentWeather(props) {
         </p>
       </div>
       <div className="float-sm-right">
-      <TemperatureButton />
+      <ButtonGroup aria-label="Basic example">
+        <Button variant="secondary" onClick={convertToCelsius}>°C</Button>
+        <Button variant="secondary" onClick={convertToFahrenheit}>°F</Button>
+      </ButtonGroup>
       </div>
       <h2>
         <div className="row">
           <span className="col-6">
             <span className="weatherCondition"> {weatherData.description} </span>
-            <span><WeatherTemperature celcius={weatherData.temperature}/></span>
+            <span><WeatherTemperature celsius={weatherData.temperature} unit={unit}/></span>
             <span><WeatherIcon code={weatherData.icon}/></span>
             <h4 className="ExtraInfo">
             <FontAwesomeIcon icon="tint" size="lg" /> Humidity: {weatherData.humidity}%
@@ -161,14 +176,14 @@ export default function CurrentWeather(props) {
           <span className="col-6">
             <FontAwesomeIcon icon="thermometer-half" size="lg" /> Real feel: 
            <span>
-            <WeatherTemperature celcius={weatherData.feelTemperature} />
+            <WeatherTemperature celsius={weatherData.feelTemperature} unit={unit} />
             <Action temperature={weatherData.feelTemperature}/>
            </span>
           </span>
         </div>
       </h2>
       
-      <ForecastRow location={weatherData.city}/>
+      <ForecastRow location={weatherData.city} unit={unit}/>
     </div>
   );
   }else{

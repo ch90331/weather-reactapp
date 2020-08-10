@@ -15,12 +15,12 @@ export default function ForecastRow(props) {
   if(show && props.location === forecast.city.name){
     return (
       <div className="ForecastRow row">
-        <Forecast data={forecast.list[0]} />
-        <Forecast data={forecast.list[1]} />
-        <Forecast data={forecast.list[2]} />
-        <Forecast data={forecast.list[3]} />
-        <Forecast data={forecast.list[4]} />
-        <Forecast data={forecast.list[5]} />
+        <Forecast data={forecast.list[0]} unit={props.unit}/>
+        <Forecast data={forecast.list[1]} unit={props.unit}/>
+        <Forecast data={forecast.list[2]} unit={props.unit}/>
+        <Forecast data={forecast.list[3]} unit={props.unit}/>
+        <Forecast data={forecast.list[4]} unit={props.unit}/>
+        <Forecast data={forecast.list[5]} unit={props.unit}/>
       </div>
     );
   }else{
