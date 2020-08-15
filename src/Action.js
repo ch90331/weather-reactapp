@@ -16,9 +16,9 @@ export default function Action (props){
   }
 
   function changeToComfortable (){
-    setComment("Comfortable temperature to invite your friends 👩🏻‍🤝‍👩🏻 or family 👨‍👩‍👧‍👦 to do some outdoor activities! Why not visit night market?👇🏻👇🏻👇🏻");
-    setImg("Night_Market");
-    setObject(null);
+    setComment("Comfortable temperature to invite your friends 👩🏻‍🤝‍👩🏻 or family 👨‍👩‍👧‍👦 to gather and drink some BEER!👏🏻👏🏻");
+    setImg("Taiwan_Beer");
+    setObject("Ganbei🍻!");
     setColor("comfortable");
   }
 
@@ -30,7 +30,7 @@ export default function Action (props){
   }
 
   function changeToCold (){
-    setComment("Soup dumplings with rich nutrients can warm you up 🔥 better than anything else, just need to be careful while eating!!");
+    setComment("Soup dumplings with rich nutrients can warm you up 🔥 better than anything else, just need to be careful while eating 🥢!!");
     setImg("Xiaolongbao");
     setObject(null);
     setColor("cold");
@@ -61,7 +61,7 @@ export default function Action (props){
     return(
       <div className={color}>
        <div> {comment} </div>
-       <img src={require(`./Img/${img}.png`)} alt="hot" width="35%" />
+       <img src={require(`./Img/${img}.png`)} alt="hot" width="50%" />
        <div> {object} </div>
       </div>
     );

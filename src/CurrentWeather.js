@@ -145,7 +145,7 @@ export default function CurrentWeather(props) {
           <input type="submit" value="GO" className="go" />
           <span>
             <button className="now" onClick={handlePosition}>
-              Localize
+            <FontAwesomeIcon icon="map-marker-alt" size="lg" />
             </button>
           </span>
         </div>

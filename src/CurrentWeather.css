@@ -14,26 +14,25 @@ p {
     border-radius: 10px;
     border: solid #50b272;
     width: 33%;
-    height: 25px;
+    height: 33px;
   }
   
   .go {
+    margin: 5px;
     border: none;
-    border-radius: 10px;
+    border-radius: 50%;
     color: #e8f3dc;
     background: #50b272;
-    width: 75px;
     font-weight: bold;
     font-size: 20px;
   }
   
   .now {
     border: none;
-    border-radius: 10px;
+    border-radius: 50%;
     padding: 5px 7px 5px 7px;
     color: #50b272;
     background: #e8f3dc;
-    width: 130px;
     font-weight: bold;
     font-size: 16px;
   }
