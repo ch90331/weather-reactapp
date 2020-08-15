@@ -7,6 +7,7 @@ import WeatherTemperature from "./WeatherTemperature";
 import ForecastRow from "./ForecastRow";
 import Action from "./Action";
 import axios from "axios";
+import Loader from 'react-loader-spinner';
 
 import "./WeatherTemperature.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -193,6 +194,14 @@ export default function CurrentWeather(props) {
   );
   }else{
     search();
-    return"Loading....";
+    return(
+      <Loader
+         type="Puff"
+         color="#DDFEFE"
+         height={100}
+         width={100}
+         timeout={10000}
+      />
+     );
   }
 }
