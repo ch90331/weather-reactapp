@@ -155,9 +155,9 @@ export default function CurrentWeather(props) {
         <div className="row">
         <div className="col"></div>
         <div className="col-6">
-        <p>
+        <div>
           "Live in the moment"<FormattedTime day={day} realHour={hour.display} min={minute.display}/>
-        </p>
+        </div>
         </div>
         <div className="col">
             <ButtonGroup aria-label="Basic example">
