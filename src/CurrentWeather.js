@@ -64,14 +64,12 @@ export default function CurrentWeather(props) {
       realHours = `00`;
     } else if (realHours < 10) {
       realHours =`0${realHours}`;
-    } else realHours=realHours;
+    }
     setHour({
       display: realHours});
     let minute= date.getMinutes();
     let rawOffset= response.data.raw_offset/3600;
-    if (Number.isInteger(rawOffset)){
-      minute=minute;
-    }else {
+    if (!Number.isInteger(rawOffset)){
       minute=minute+30;
     }
     if (minute === 0){
@@ -80,7 +78,7 @@ export default function CurrentWeather(props) {
       minute= `0${minute}`;
     }else if (minute > 60){
       minute= minute - 60;
-    }else minute = minute;
+    }
     setMinute({
       display: minute});
   }
