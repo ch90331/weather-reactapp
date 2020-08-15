@@ -1,49 +1,49 @@
 .hot {
- border:inset #50B272;
+ border:inset #FFDF9F;
  border-width: 8px;
  border-radius: 5px 80px 5px;
  padding: 20px 10px;
  font-size: 20px;
- color:#2A5E3C;
- background-image: linear-gradient(to right, #f83600 0%, #f9d423 100%);
+ color: #B5305E;
+ background-image: linear-gradient(-225deg, #FFE29F 0%, #FFA99F 48%, #FF719A 100%);
 }
 
 .comfortable {
-    border:inset #50B272;
+    border:inset #DAF7EA;
     border-width: 8px;
     border-radius: 5px 80px 5px;
     padding: 20px 10px;
     font-size: 20px;
-    color:#2A5E3C;
-    background-image: linear-gradient(-20deg, #ddd6f3 0%, #faaca8 100%, #faaca8 100%);
+    color:#254886;
+    background-image: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);
    }
 
 .cool {
-    border:inset #50B272;
+    border:inset#6B93C9;
     border-width: 8px;
     border-radius: 5px 80px 5px;
     padding: 20px 10px;
     font-size: 20px;
-    color:#2A5E3C;
+    color: #663E29;
     background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
    }
 
 .cold{
-    border:inset #50B272;
+    border:inset #6F70AB;
     border-width: 8px;
     border-radius: 5px 80px 5px;
     padding: 20px 10px;
     font-size: 20px;
-    color:#2A5E3C;
+    color:#383957;
     background-image: linear-gradient(45deg, #93a5cf 0%, #e4efe9 100%);
     }
 
 .freezinglyCold{
-    border:inset #50B272;
+    border:inset #254886;
     border-width: 8px;
     border-radius: 5px 80px 5px;
     padding: 20px 10px;
     font-size: 20px;
-    color:#2A5E3C;
+    color:#254886;
     background-image: linear-gradient(-225deg, #FFFEFF 0%, #D7FFFE 100%);
 }
