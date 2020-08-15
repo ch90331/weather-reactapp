@@ -156,7 +156,7 @@ export default function CurrentWeather(props) {
         <div className="col"></div>
         <div className="col-6">
         <p>
-          <FormattedTime day={day} realHour={hour.display} min={minute.display}/>
+          "Live in the moment"<FormattedTime day={day} realHour={hour.display} min={minute.display}/>
         </p>
         </div>
         <div className="col">
@@ -187,7 +187,9 @@ export default function CurrentWeather(props) {
           </span>
         </div>
       </h2>
-      
+      <p>
+        "Plan for the future"
+      </p>
       <ForecastRow location={weatherData.city} unit={unit}/>
     </div>
   );
