@@ -152,15 +152,20 @@ export default function CurrentWeather(props) {
       </form>
       <div className="top">
       <h1>{weatherData.city} <small>in</small> {weatherData.country}</h1> 
+        <div className="row">
+        <div className="col"></div>
+        <div className="col-6">
         <p>
           <FormattedTime day={day} realHour={hour.display} min={minute.display}/>
         </p>
-      </div>
-      <div className="float-sm-right">
-      <ButtonGroup aria-label="Basic example">
-        <Button variant="secondary" onClick={convertToCelsius}>°C</Button>
-        <Button variant="secondary" onClick={convertToFahrenheit}>°F</Button>
-      </ButtonGroup>
+        </div>
+        <div className="col">
+            <ButtonGroup aria-label="Basic example">
+            <Button variant="secondary" onClick={convertToCelsius}>°C</Button>
+            <Button variant="secondary" onClick={convertToFahrenheit}>°F</Button>
+            </ButtonGroup>
+        </div>
+        </div>
       </div>
       <h2>
         <div className="row">
