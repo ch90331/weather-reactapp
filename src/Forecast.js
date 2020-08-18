@@ -4,8 +4,18 @@ import WeatherIcon from "./WeatherIcon";
 export default function Forecast(props) {
   function hours(){
     let date= new Date(props.data.dt*1000)
-    let hours=date.getHours()
-    return`${hours}:00`
+    let hours=date.getUTCHours()
+    let realHours= parseInt(hours) + props.timezone
+    if (realHours >= 24) {
+      realHours= realHours -24;
+    } else if (realHours < 0){
+      realHours += 24;
+    } else if (realHours === 0){
+      realHours = `00`;
+    } else if (realHours < 10) {
+      realHours =`0${realHours}`;
+    }
+    return`${realHours}:00`
   }
 
   function temperatureMax(){

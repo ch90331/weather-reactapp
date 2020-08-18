@@ -19,6 +19,7 @@ export default function CurrentWeather(props) {
   const [hour, setHour]=useState({});
   const [minute, setMinute]=useState({});
   const [unit, setUnit]= useState ("celsius");
+  const [timezone, setTimezone]= useState ({});
 
   function weatherResponse(response){
     setWeatherData({
@@ -55,6 +56,7 @@ export default function CurrentWeather(props) {
     let date= new Date();
     let hours= date.getUTCHours();
     let inte= parseInt(hours);
+    setTimezone(response.data.utc_offset);
     let offset= parseInt(response.data.utc_offset);
     let realHours= inte+offset;
     if (realHours >= 24) {
@@ -189,7 +191,7 @@ export default function CurrentWeather(props) {
       <p>
         "Plan for the future"
       </p>
-      <ForecastRow location={weatherData.city} unit={unit}/>
+      <ForecastRow location={weatherData.city} unit={unit} timezone={parseInt(timezone)}/>
     </div>
   );
   }else{
