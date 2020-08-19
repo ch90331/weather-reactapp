@@ -173,7 +173,7 @@ export default function CurrentWeather(props) {
           <span className="col-6">
             <span className="weatherCondition"> {weatherData.description} </span>
             <span><WeatherTemperature celsius={weatherData.temperature} unit={unit}/></span>
-            <span><WeatherIcon code={weatherData.icon}/></span>
+            <span><WeatherIcon size={100} code={weatherData.icon}/></span>
             <h4 className="ExtraInfo">
             <FontAwesomeIcon icon="tint" size="lg" /> Humidity: {weatherData.humidity}%
             <div> <FontAwesomeIcon icon="wind" size="lg" /> Wind: {weatherData.wind} km/h</div>

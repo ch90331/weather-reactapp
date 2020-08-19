@@ -33,12 +33,13 @@ export default function Forecast(props) {
         {hours()}
       </small>
       <div className="ForecastIcon">
-        <WeatherIcon code={props.data.weather[0].icon}/>
+        <WeatherIcon size={65} code={props.data.weather[0].icon}/>
       </div>
       <div>
         <strong>
          <span>{temperatureMax()}°</span>
         </strong>
+        {" "}
         <span>{temperatureMin()}°</span>
       </div>
     </div>
